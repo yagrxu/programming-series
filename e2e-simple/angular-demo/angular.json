@@ -29,11 +29,11 @@
             "scripts": []
           },
           "configurations": {
-            "production": {
+            "local": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "with": "src/environments/environment.local.ts"
                 }
               ],
               "optimization": true,
@@ -61,8 +61,8 @@
             "browserTarget": "angular-demo:build"
           },
           "configurations": {
-            "production": {
-              "browserTarget": "angular-demo:build:production"
+            "local": {
+              "browserTarget": "angular-demo:build:local"
             }
           }
         },

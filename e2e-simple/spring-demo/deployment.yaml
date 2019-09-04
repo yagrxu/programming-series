@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: personapp
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: demo-backend
+    spec:
+      containers:
+        - name: demo
+          image: registry-intl-vpc.eu-central-1.aliyuncs.com/yagr-demo/demo:v0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080

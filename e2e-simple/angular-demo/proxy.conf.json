@@ -1,0 +1,7 @@
+{
+    "/service": {
+      "target": "http://personservice:8080/api/",
+      "secure": false,
+      "pathRewrite": {"^/service" : ""}
+    }
+  }
