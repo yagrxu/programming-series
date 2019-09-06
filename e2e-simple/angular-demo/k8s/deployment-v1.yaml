@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: demo-ui-v1
+  labels:
+    app: demo-ui
+    version: v1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-ui
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: demo-ui
+        version: v1
+    spec:
+      containers:
+        - name: demo-ui
+          image: registry-intl-vpc.eu-central-1.aliyuncs.com/yagr-demo/demo-ui:v0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 4200

@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: "demo-ui-vs"
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - demo-ui-gateway-istio
+  http:
+  - route:
+    - destination:
+        host: demo-ui-service-v1.default.svc.cluster.local
+        port:
+          number: 4200
+      weight: 10
+    - destination:
+        host: demo-ui-service-v2.default.svc.cluster.local
+        port:
+          number: 4200
+      weight: 90

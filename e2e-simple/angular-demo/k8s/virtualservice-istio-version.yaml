@@ -1,0 +1,39 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: demo-ui-service-route
+spec:
+  hosts:
+  - demo-ui-service.default.svc.cluster.local
+  http:
+  - match:
+    - uri:
+        prefix: "/v1"
+    - uri:
+        prefix: "/v2"
+    rewrite:
+      uri: "/"
+    route:
+    - destination:
+        host: demo-ui-service.default.svc.cluster.local
+        port: 4200
+        subset: v2
+  - route:
+    - destination:
+        host: demo-ui-service.default.svc.cluster.local
+        port: 4200
+        subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: demo-ui-service-destination
+spec:
+  host: demo-ui-service.default.svc.cluster.local
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+  - name: v2
+    labels:
+      version: v2

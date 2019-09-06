@@ -103,6 +103,11 @@ export const environment = {
 ng serve --configuration=local
 ```
 
+## 2.3 make the docker push
+You need to push the docker images into container registry
+docker login --username=<master.email> registry-intl.eu-central-1.aliyuncs.com
+docker tag <image.id> registry-intl.eu-central-1.aliyuncs.com/yagr-demo/demo-ui:<version>
+
 # Class 3 prepare k8s yaml files
 Each micro service requires minimum 2 replicas and a server load balancer.
 

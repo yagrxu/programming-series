@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-ui-service-v1
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+    - name: port
+      port: 4200
+      protocol: TCP
+      targetPort: 4200
+  selector:
+    app: demo-ui
+    version: v1
+  sessionAffinity: None
+  type: LoadBalancer
